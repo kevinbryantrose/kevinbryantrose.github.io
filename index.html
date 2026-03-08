@@ -962,7 +962,7 @@
 
           <p>
             Beyond performance, Kevin is an <strong>acting and public speaking instructor</strong>, 
-            a corporate trainer and speaker, writer, standardized patient educator, 
+            a certified standardized patient educator at leading medical institutions, 
             and the founder of Axon Synergy LLC.
           </p>
 
@@ -1326,18 +1326,16 @@
     <div class="footer-social">
       <a href="https://instagram.com/kevrosencrantz" target="_blank">Instagram</a>
       <a href="https://imdb.me/KevRose" target="_blank">IMDb</a>
-      <a href="/cdn-cgi/l/email-protection#bef5dbc8d7d0dfddcad1cc87fed9d3dfd7d290ddd1d3">Email</a>
+      <a href="mailto:Kevinactor9@gmail.com">Email</a>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Nav shrink on scroll
+  <script>
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     reveals.forEach(el => el.classList.add('hidden'));
     const observer = new IntersectionObserver((entries) => {
@@ -1350,7 +1348,6 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
 
-    // Credits tab switching
     function switchTab(e, panel) {
       document.querySelectorAll('.credits-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.credits-panel').forEach(p => p.classList.remove('active'));
@@ -1358,7 +1355,6 @@
       document.getElementById('panel-' + panel).classList.add('active');
     }
 
-    // Video modal
     function openModal(url) {
       document.getElementById('modal-iframe').src = url + '?autoplay=1';
       document.getElementById('reel-modal').classList.add('open');
@@ -1370,4 +1366,12 @@
         document.getElementById('modal-iframe').src = '';
         document.getElementById('reel-modal').classList.remove('open');
         document.body.style.overflow = '';
-   
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal(null, true);
+    });
+  </script>
+</body>
+</html>
