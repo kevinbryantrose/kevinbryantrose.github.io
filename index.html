@@ -1191,7 +1191,7 @@
       <div class="reel-grid reveal">
         <!-- Main reel -->
         <div class="reel-main" onclick="openModal('https://player.vimeo.com/video/1078161277')">
-          <div class="reel-placeholder">Your Demo Reel</div>
+          <img id="thumb-main" src="" alt="Demo Reel" style="width:100%;height:100%;object-fit:cover;">
           <div class="play-btn">
             <svg width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
@@ -1200,7 +1200,7 @@
 
         <!-- Clip 1 -->
         <div class="reel-thumb-wrap" onclick="openModal('https://player.vimeo.com/video/948750268')">
-          <div class="reel-placeholder" style="font-size:0.6rem">Clip</div>
+          <img id="thumb-1" src="" alt="Blue Bloods" style="width:100%;height:100%;object-fit:cover;">
           <div class="play-btn">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
@@ -1209,7 +1209,7 @@
 
         <!-- Clip 2 -->
         <div class="reel-thumb-wrap" onclick="openModal('https://player.vimeo.com/video/1083976581')">
-          <div class="reel-placeholder" style="font-size:0.6rem">Clip</div>
+          <img id="thumb-2" src="" alt="Power Book III" style="width:100%;height:100%;object-fit:cover;">
           <div class="play-btn">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
@@ -1367,6 +1367,21 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal(null, true);
+    });
+
+    // Load Vimeo thumbnails automatically
+    const vimeoThumbs = [
+      { id: '1078161277', el: 'thumb-main' },
+      { id: '948750268',  el: 'thumb-1' },
+      { id: '1083976581', el: 'thumb-2' }
+    ];
+    vimeoThumbs.forEach(v => {
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/' + v.id)
+        .then(r => r.json())
+        .then(data => {
+          const el = document.getElementById(v.el);
+          if (el) el.src = data.thumbnail_url;
+        });
     });
   </script>
 </body>
